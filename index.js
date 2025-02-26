@@ -35,6 +35,28 @@ app.get('/', async (req, res) => {
 
 // * Code for Route 2 goes here
 
+app.get('/createNew', async (req, res) => {
+    const { firstname, lastname, bio, video_games, favorit_movie, email } = req.query;
+    const data = { 
+        properties: {
+            firstname, lastname, bio, video_games, favorit_movie, email 
+        }
+    };
+
+    try {
+        await axios.post('https://api.hubspot.com/crm/v3/objects/contacts', data, {
+            headers:{
+                Authorization: `${PRIVATE_APP_ACCESS}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+    } catch (error) {
+        console.error('Error creating new data:', error.response?.data || error.message);
+        res.redirect('/');
+    }
+});
+
 // TODO: ROUTE 3 - Create a new app.post route for the custom objects form to create or update your custom object data. Once executed, redirect the user to the homepage.
 
 // * Code for Route 3 goes here
