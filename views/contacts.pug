@@ -6,7 +6,7 @@ html
 
     body
         h1 HubSpot Contacts
-        if records.length 
+        if data.length 
             table  
                 thead 
                     tr 
@@ -18,14 +18,14 @@ html
                         th Favorite Movie 
                 
                 tbody 
-                    each record in records 
+                    each data in data 
                         tr 
-                            td= record.firstName
-                            td= record.lastName
-                            td= record.email
-                            td= record.bio
-                            td= record.videoGames
-                            td= record.favoriteMovie
+                            td= data.firstName
+                            td= data.lastName
+                            td= data.email
+                            td= data.bio
+                            td= data.videoGames
+                            td= data.favoriteMovie
         else
             p No records found
         p 

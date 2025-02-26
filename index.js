@@ -18,7 +18,7 @@ app.get('/', async (req, res) => {
     try {
         const response = await axios.get('https://api.hubspot.com/crm/v3/objects/contacts?properties=firstname,lastname,bio,video_games,favorit_movie,email',{
             headers:{
-                Authorization: `${PRIVATE_APP_ACCESS}`,
+                Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
                 'Content-Type': 'application/json'
             }
         });
@@ -46,7 +46,7 @@ app.get('/createNew', async (req, res) => {
     try {
         await axios.post('https://api.hubspot.com/crm/v3/objects/contacts', data, {
             headers:{
-                Authorization: `${PRIVATE_APP_ACCESS}`,
+                Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
                 'Content-Type': 'application/json'
             }
         });

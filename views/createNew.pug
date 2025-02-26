@@ -7,13 +7,13 @@ html
         h1 Create New Contact
         form(action="/createNew", method="POST")
             label(for="firstName") First Name
-            input(type="text", name="firstName")
+            input(type="text", name="firstName" required)
             br
             label(for="lastName") Last Name
-            input(type="text", name="lastName")
+            input(type="text", name="lastName" required)
             br
             label(for="email") Email
-            input(type="email", name="email")
+            input(type="email", name="email" required)
             br
             label(for="bio") Bio
             input(type="text", name="bio")
@@ -24,6 +24,6 @@ html
             label(for="favoriteMovie") Favorite Movie
             input(type="text", name="favoriteMovie")
             br
-            input(type="submit", value="Submit")
+            button(type="submit") Submit
         p 
             a(href="/contacts") Back to Contacts
