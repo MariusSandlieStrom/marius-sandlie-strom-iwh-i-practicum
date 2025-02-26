@@ -1,15 +1,32 @@
-//- ** This is a sample of a pug template and how it uses the data passed to it from index.js.
+doctype html 
+html 
+    head
+        title Contacts
+        link(rel="stylesheet", href="/css/style.css")
 
-//- doctype html
-//- html 
-//-     head 
-//-         title= `${title}`
-//-         meta(name="viewport" content="width=device-width, initial-scale=1")
-//-         link(rel="stylesheet", href="/css/style.css")
-//-     body    
-//-         h1 Contacts
-//-         .cards 
-//-             each contact in data
-//-                 .card 
-//-                     h2.card__name #{contact.properties.firstname}  #{contact.properties.lastname}
-//-                     p.card__email #{contact.properties.email}
+    body
+        h1 HubSpot Contacts
+        if record.length 
+            table  
+                thead 
+                    tr 
+                        th First Name
+                        th Last Name
+                        th Email
+                        th Bio 
+                        th Video Games 
+                        th Favorite Movie 
+                
+                tbody 
+                    each record in records 
+                        tr 
+                            td= record.firstName
+                            td= record.lastName
+                            td= record.email
+                            td= record.bio
+                            td= record.videoGames
+                            td= record.favoriteMovie
+        else
+            p No records found
+        p 
+            a(href="/createNew") Add New Contact

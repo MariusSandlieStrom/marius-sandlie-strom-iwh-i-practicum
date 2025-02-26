@@ -18,9 +18,17 @@ app.get('/', async (req, res) => {
     try {
         const response = await axios.get('https://api.hubspot.com/crm/v3/objects/contacts?properties=firstname,lastname,bio,video_games,favorit_movie,email',{
             headers:{
-                Authorization:
+                Authorization: `${PRIVATE_APP_ACCESS}`,
+                'Content-Type': 'application/json'
             }
-        })
+        });
+        res.render('contacts', {title: 'Custom Objects', data: response.data.results});
+    } catch (error) {
+        console.error('Error fettching data:', error.response?.data || error.message);
+        res.render('contacts', {title: 'Custom Objects', data: [] });
+    }
+});
+
 
 
 // TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
